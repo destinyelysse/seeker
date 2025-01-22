@@ -19,16 +19,18 @@ class Game:
                            [4," "," "," "," "," "],
                            [5," "," "," "," "," "]]
    
-    def print_board_square(self, char):
+    def format_board_square(self, char):
         if isinstance(char, int):
-            print("  "+str(char)+"  ")
+            return " "+str(char)+" "
         else:
-            print("["+char+"]")
+            return "["+char+"]"
 
     def print_user_board(self):
         for row in self.user_board:
+            formatted_row = ""
             for col in row:
-                self.print_board_square(col)
+                formatted_row += self.format_board_square(col)
+            print(formatted_row)
 
 game = Game()
 game.start_game()
