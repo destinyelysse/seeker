@@ -39,7 +39,6 @@ def create_board(board_type):
             if row_num == 0 and col_num == 0:
                 generated_row.append(" - ")
             elif row_num == 0:
-                
                 generated_row.append(" "+str(col_num)+" ")
             elif col_num==0:
                 generated_row.append(" "+str(row_num)+" ")
@@ -54,7 +53,7 @@ def create_board(board_type):
 
         w_location_row = random.randint(1,6)
         w_location_col = random.randint(1,6)
-        board[l_location_row][l_location_col] = " W "
+        board[w_location_row][w_location_col] = " W "
 
 
     return board
@@ -67,9 +66,7 @@ def print_board(board):
         print(formatted_row)
 
 class Game:
-    playing = False
     def __init__(self, score=0):
-        self.score = score
         self.game_board = []
         self.user_board = []
         self.game_status = "not started"
