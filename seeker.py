@@ -1,5 +1,27 @@
 import random
 
+def print_game_instructions():
+        print("")
+        print("LETS PLAY SEEKER! :D")
+        print("")
+        print("")
+        print("HOW TO PLAY:")
+        print("")
+        print("You have a 6x6 game board of spaces.")
+        print("")
+        print("Select a space you want to play.")
+        print("Enter the row number for that space.")
+        print("Then, enter the column number.")
+        print("")
+        print("Your goal is to find the space with a W.")
+        print("If you find it, you win!")
+        print("")
+        print("If there is nothing there, the space is marked with X.")
+        print("")
+        print("Be careful - if you find the L, you lose!")
+        print("")
+        print("")
+
 def create_board(board_type):
 
     board = []
@@ -53,9 +75,7 @@ class Game:
         self.game_status = "not started"
 
     def display_game_home(self):
-        print("")
-        print("LETS PLAY SEEKER! :D")
-        print("")
+        print_game_instructions()
         start = input("PRESS ENTER TO START")
         print("")
         self.start_game()
@@ -65,6 +85,9 @@ class Game:
         self.game_status = "playing"
         self.game_board = create_board("game")
         self.user_board = create_board("user")
+        print("YOUR BOARD:")
+        print("")
+        self.print_user_board()
         self.get_player_turn_input()
     
     def print_game_board(self):
@@ -74,28 +97,32 @@ class Game:
         print_board(self.user_board)
     
     def get_player_turn_input(self):
-        print("YOUR BOARD:")
-        print("")
-        game.print_user_board()
-        print("")
-        print("SELECT A SPACE TO PLAY. ENTER ROW AND COLUMN NUMBER.")
         print("")
         selected_row = input("SELECT A ROW: ")
         selected_col = input("SELECT A COLUMN: ")
         print("")
         print("YOU SELECTED ROW "+selected_row+" AND COLUMN "+selected_col)
         print("")
+        print("")
         self.play_space(int(selected_row),int(selected_col))
 
     def play_space(self, row, col):
         self.user_board[row][col] = self.game_board[row][col]
         if self.game_board[row][col] == " L ":
-            print("OH NO - YOU GOT THE L! GAME OVER!")
             self.print_user_board()
+            print("")
+            print("OH NO - YOU GOT THE L! GAME OVER!")
+            print("")
         elif self.game_board[row][col] == " W ":
+            self.print_user_board()
+            print("")
             print("YAY! YOU GOT THE W. YOU WIN!")
+            print("")
         else:
+            self.print_user_board()
+            print("")
             print("NICE! YOU ARE SAFE...FOR THIS ROUND.")
+            print("")
             print("")
             self.get_player_turn_input()
 
